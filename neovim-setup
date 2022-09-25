@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Neovim nightly installation
+# Reference: https://github.com/neovim/neovim/wiki/Building-Neovim
+
+if [ -z "$(ls ~/repositories/neovim 2>/dev/null)" ]; then
+    git clone https://github.com/neovim/neovim
+else
+    echo "Neovim already cloned into ~/repositories"
+fi
+
+cd ~/repositories/neovim
+git checkout nightly
+
+# neovim build dependencies
+sudo apt-get install cmake libtool-bin unzip gettext -y
+
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
