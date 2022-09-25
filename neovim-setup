@@ -15,7 +15,7 @@ cd ~/repositories/neovim
 git checkout nightly
 
 # neovim build dependencies
-sudo apt-get install cmake libtool-bin unzip gettext -y
+sudo apt-get install -y cmake libtool-bin unzip gettext
 
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
@@ -29,8 +29,22 @@ git clone https://github.com/wbthomason/packer.nvim \
           ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Setting up nvim init.lua
-mkdir -p ~/.config/nvim/lua/
+mkdir -p ~/.config/nvim/
 cp $SETUP_SCRIPT_DIR/config/init.lua ~/.config/nvim
 
 # Setting up the plugin configuration file
+mkdir -p ~/.config/nvim/lua
 cp $SETUP_SCRIPT_DIR/config/plugins.lua ~/.config/nvim/lua/
+
+# Setting up Language Server Protocol (LSP) implementations.
+# Reference on LSP: https://microsoft.github.io/language-server-protocol/
+
+sudo apt-get install -y python3-pip
+pip install pyright
+
+PATH=$PATH:$HOME/.local/bin
+
+# Setting up custom key mappings
+cp $SETUP_SCRIPT_DIR/config/mappings.lua ~/.config/nvim/lua/mappings.lua
+
+echo "=============== NEOVIM SUCCESSFULLY SETUP ==============="
