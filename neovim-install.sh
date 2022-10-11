@@ -53,8 +53,19 @@ cp $SETUP_SCRIPT_DIR/config/plugins.lua ~/.config/nvim/lua/
 # Setting up Language Server Protocol (LSP) implementations.
 # Reference on LSP: https://microsoft.github.io/language-server-protocol/
 
+# Python LSP
+
 sudo apt-get install -y python3-pip
 pip install pyright
+
+# C# LSP
+cd $SETUP_SCRIPT_DIR
+sudo mkdir /usr/local/bin/omnisharp
+
+curl -LO https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.1/omnisharp-linux-x64-net6.0.tar.gz
+sudo tar -xvf omnisharp-linux-x64-net6.0.tar.gz --directory /usr/local/bin/omnisharp
+
+rm ./omnisharp-linux-x64-net6.0.tar.gz 
 
 echo -e "\n============ Plugins successfully installed ============="
 
@@ -63,3 +74,4 @@ PATH=$PATH:$HOME/.local/bin
 echo -e "=============== Neovim successfully setup ==============="
 echo -e "\nWARNING: Neovim was configured to synchronize packages on every startup. The first startup cycle will result in \n\
 an error message due to missing packages, it is resolved immediately after startup as the packages are synced up automatically."
+
