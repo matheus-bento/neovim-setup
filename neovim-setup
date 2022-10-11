@@ -6,7 +6,7 @@ SETUP_SCRIPT_DIR="$(dirname $(realpath "$0"))"
 # Reference: https://github.com/neovim/neovim/wiki/Building-Neovim
 
 if [ -z "$(ls ~/repositories/neovim 2>/dev/null)" ]; then
-    git clone https://github.com/neovim/neovim
+    git clone https://github.com/neovim/neovim ~/repositories/neovim
 else
     echo "Neovim already cloned into ~/repositories"
 fi
@@ -17,7 +17,7 @@ git checkout nightly
 # neovim build dependencies
 sudo apt-get install -y cmake libtool-bin unzip gettext
 
-make CMAKE_BUILD_TYPE=RelWithDebInfo
+make CMAKE_BUILD_TYPE=Release
 sudo make install
 
 # packer.nvim installation
