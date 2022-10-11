@@ -1,16 +1,24 @@
 -- Loads packer.nvim plugin configurations setup on plugins.lua
 require('plugins')
 
+-- Tree-view setup
+require('nvim-tree').setup()
+
 -- Setting up the dracula theme
 vim.cmd[[colorscheme dracula]]
 
 -- Custom key mappings
 
+local opts = { noremap=true, silent=true }
+
+-- nvim-tree mappings
+vim.keymap.set('n', 't', ':NvimTreeToggle<CR>', opts)
+
 -- LSP mappings. Based on neovim/nvim-lspconfig suggested key mappings for LSP
 -- Reference: https://github.com/neovim/nvim-lspconfig#suggested-configuration
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
