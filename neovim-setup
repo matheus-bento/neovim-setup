@@ -44,7 +44,4 @@ pip install pyright
 
 PATH=$PATH:$HOME/.local/bin
 
-# Setting up custom key mappings
-cp $SETUP_SCRIPT_DIR/config/mappings.lua ~/.config/nvim/lua/mappings.lua
-
 echo "=============== NEOVIM SUCCESSFULLY SETUP ==============="
