@@ -5,6 +5,8 @@ SETUP_SCRIPT_DIR="$(dirname $(realpath "$0"))"
 # Neovim nightly installation
 # Reference: https://github.com/neovim/neovim/wiki/Building-Neovim
 
+echo -e "\n=================== Installing neovim ===================\n"
+
 if [ -z "$(ls ~/repositories/neovim 2>/dev/null)" ]; then
     git clone https://github.com/neovim/neovim ~/repositories/neovim
 else
@@ -19,6 +21,18 @@ sudo apt-get install -y cmake libtool-bin unzip gettext
 
 make CMAKE_BUILD_TYPE=Release
 sudo make install
+
+sudo ln -s /usr/local/bin/nvim /usr/local/bin/neovim
+
+echo -e "\n============= Neovim successfully installed =============\n"
+
+echo -e "======================== Plugins ========================\n"
+
+echo -e "The following plugins will be installed:\n \
+\t- wbthomason/packer.nvim:       Package management tool;\n \
+\t- neovim/nvim-lspconfig:        Quickstart configurations for the Language Server Protocol (LSP);\n \
+\t- nvim-tree/nvim-tree.lua:      Tree-view for neovim;\n \
+\t- Mofiqul/dracula.nvim:         Dark theme for neovim.\n"
 
 # packer.nvim installation
 
@@ -42,6 +56,10 @@ cp $SETUP_SCRIPT_DIR/config/plugins.lua ~/.config/nvim/lua/
 sudo apt-get install -y python3-pip
 pip install pyright
 
+echo -e "\n============ Plugins successfully installed ============="
+
 PATH=$PATH:$HOME/.local/bin
 
-echo "=============== NEOVIM SUCCESSFULLY SETUP ==============="
+echo -e "=============== Neovim successfully setup ==============="
+echo -e "\nWARNING: Neovim was configured to synchronize packages on every startup. The first startup cycle will result in \n\
+an error message due to missing packages, it is resolved immediately after startup as the packages are synced up automatically."
