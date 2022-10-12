@@ -12,6 +12,8 @@ return packer.startup(function(use)
     use 'feline-nvim/feline.nvim' -- Git status bar
     use 'lewis6991/gitsigns.nvim' -- Git utilities for the text editor
 
+    use 'puremourning/vimspector' -- Debugging frontend for neovim
+
     -- Synchronizes packages on every startup cycle
     packer.sync()
 end)

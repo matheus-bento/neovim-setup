@@ -4,6 +4,9 @@ vim.o.number        = true     -- Enabling line numbers
 vim.o.termguicolors = true     -- Enabling termguicolors for feline
 vim.cmd('colorscheme dracula') -- Setting up the dracula theme
 
+vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
+require('config.vimspector').setup()
+
 require('nvim-tree').setup()
 require('feline').setup()
 require('gitsigns').setup {

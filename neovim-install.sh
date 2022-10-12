@@ -32,6 +32,7 @@ echo -e "The following plugins will be installed:\n \
 \t- wbthomason/packer.nvim:       Package management tool;\n \
 \t- neovim/nvim-lspconfig:        Quickstart configurations for the Language Server Protocol (LSP);\n \
 \t- nvim-tree/nvim-tree.lua:      Tree-view for neovim;\n \
+\t- puremourning/vimspector:      Debugging GUI for neovim\n \
 \t- lewis6991/gitsigns.nvim:      Git editor utilities;\n \
 \t- feline-nvim/feline.nvim:      Git status bar;\n \
 \t- Mofiqul/dracula.nvim:         Dark theme for neovim.\n"
@@ -46,11 +47,15 @@ git clone https://github.com/wbthomason/packer.nvim \
 
 # Setting up nvim init.lua
 mkdir -p ~/.config/nvim/
-cp $SETUP_SCRIPT_DIR/config/init.lua ~/.config/nvim
+cp $SETUP_SCRIPT_DIR/lua/init.lua ~/.config/nvim
 
 # Setting up the plugin configuration file
 mkdir -p ~/.config/nvim/lua
-cp $SETUP_SCRIPT_DIR/config/plugins.lua ~/.config/nvim/lua/
+cp $SETUP_SCRIPT_DIR/lua/plugins.lua ~/.config/nvim/lua/
+
+# Setting up vimspector configuration file
+mkdir -p ~/.config/nvim/lua/config
+cp $SETUP_SCRIPT_DIR/lua/config/vimspector.lua ~/.config/nvim/lua/config
 
 # Setting up Language Server Protocol (LSP) implementations.
 # Reference on LSP: https://microsoft.github.io/language-server-protocol/
@@ -74,6 +79,10 @@ echo -e "\n============ Plugins successfully installed ============="
 PATH=$PATH:$HOME/.local/bin
 
 echo -e "=============== Neovim successfully setup ==============="
+
 echo -e "\nWARNING: Neovim was configured to synchronize packages on every startup. The first startup cycle will result in \n\
 an error message due to missing packages, it is resolved immediately after startup as the packages are synced up automatically."
+
+echo -e "\nWARNING: In order to use Vimspector's GUI, you will need to manually trigger the installation for the configured \n\
+debugging fronteds by running :VimspectorInstall"
 
