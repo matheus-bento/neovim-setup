@@ -70,7 +70,6 @@ info "\n======================= Installing Pyright (Python LSP) ================
 install-pyright
 info "\n============================== Pyright installed ===============================\n"
 
-# check if this is really necessary
 PATH=$PATH:$HOME/.local/bin
 
 info "\n================================================================================"
