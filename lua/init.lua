@@ -2,10 +2,26 @@ require('plugins')             -- Loads packer.nvim plugin configurations setup 
 
 vim.o.number        = true     -- Enabling line numbers
 vim.o.termguicolors = true     -- Enabling termguicolors for feline
+
+vim.opt.list = true
+vim.opt.listchars = {
+    tab   = '→ ',
+    eol   = '↵',
+    space = '◦',
+}
+
+vim.o.tabstop       = 4        -- 4 characters of indentation on tabs
+vim.o.shiftwidth    = 4        -- 4 characters of indentation on autoindent by neovim
+vim.o.expandtab     = true     -- Insert spaces instead of tabs
+
 vim.cmd('colorscheme dracula') -- Setting up the dracula theme
 
 vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
 require('config.vimspector').setup()
+
+require('winbar').setup {
+    enabled = true
+}
 
 require('nvim-tree').setup()
 require('feline').setup()
@@ -14,9 +30,9 @@ require('gitsigns').setup {
     current_line_blame      = true,
     current_line_blame_opts = {
         virt_text         = true,
-	virt_text_pos     = 'eol',
-	delay             = 0, -- delay in milliseconds
-	ignore_whitespace = false,
+        virt_text_pos     = 'eol',
+        delay             = 0, -- delay in milliseconds
+        ignore_whitespace = false,
     }
 }
 
