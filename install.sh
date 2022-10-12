@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Verifies if dependencies are installed
 check-deps() {
@@ -29,12 +29,12 @@ install-pyright() {
 
 # Prints a string in green into stdout
 info() {
-    printf "\033[0;32m%s\033[0m\n" "$1"
+    printf "\033[0;32m%b\033[0m\n" "$1"
 }
 
 # Prints a string in red into sterr and exits with status code 1
 error() {
-    printf "\033[0;31m%s\033[0m\n" "$1" 1>&2
+    printf "\033[0;31m%b\033[0m\n" "$1" 1>&2
     exit 1
 }
 
