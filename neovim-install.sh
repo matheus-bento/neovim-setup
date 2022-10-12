@@ -35,6 +35,7 @@ echo -e "The following plugins will be installed:\n \
 \t- puremourning/vimspector:      Debugging GUI for neovim\n \
 \t- lewis6991/gitsigns.nvim:      Git editor utilities;\n \
 \t- feline-nvim/feline.nvim:      Git status bar;\n \
+\t- fgheng/winbar.nvim:           Breadcrumb navigation bar;\n \
 \t- Mofiqul/dracula.nvim:         Dark theme for neovim.\n"
 
 # packer.nvim installation
