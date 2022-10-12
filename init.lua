@@ -17,7 +17,7 @@ vim.o.expandtab     = true     -- Insert spaces instead of tabs
 vim.cmd('colorscheme dracula') -- Setting up the dracula theme
 
 vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
-require('config.vimspector').setup()
+require('vimspector').setup()
 
 require('winbar').setup {
     enabled = true
