@@ -27,6 +27,11 @@ install-pyright() {
     pip install pyright
 }
 
+# Installs tsserver, the Typescript/Javascript LSP implementation used in this setup
+install-tsserver() {
+    npm install -g typescript typescript-language-server
+}
+
 # Installs win32yank.exe to give neovim access to the system clipboard on WSL systems
 install-win32yank() {
     curl -Lo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
@@ -53,7 +58,7 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "make" "gcc" "unzip"
+check-deps "make" "gcc" "unzip" "npm"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
@@ -84,6 +89,10 @@ info "\n============================= OmniSharp installed ======================
 info "\n======================= Installing Pyright (Python LSP) ========================\n"
 install-pyright
 info "\n============================== Pyright installed ===============================\n"
+
+info "\n====== Installing typescript-language-server (Typescript/Javascript LSP) =======\n"
+install-tsserver
+info "\n=================== typescript-language-server installed =======================\n"
 
 PATH=$PATH:$HOME/.local/bin
 

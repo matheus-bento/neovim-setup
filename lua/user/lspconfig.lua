@@ -40,7 +40,7 @@ local on_attach_lsp = function(client, bufnr)
     vim.keymap.set('n', '<space>D',  vim.lsp.buf.type_definition,          bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename,                   bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action,              bufopts)
-    vim.keymap.set('n', '<space>f',  vim.lsp.buf.format({ async = true }), bufopts)
+    vim.keymap.set('n', '<space>f',  vim.lsp.buf.format,                   bufopts)
 end
 
 local lsp_flags = {
@@ -61,6 +61,12 @@ require('lspconfig').omnisharp.setup {
     -- The cmd should point to the same OmniSharp installation path
     -- defined on neovim-install.sh
     cmd = { "dotnet", "/usr/local/bin/omnisharp/OmniSharp.dll" },
+    on_attach = on_attach_lsp,
+    flags = lsp_flags,
+}
+
+-- Typescript/Javascript LSP
+require('lspconfig').tsserver.setup {
     on_attach = on_attach_lsp,
     flags = lsp_flags,
 }
