@@ -23,7 +23,6 @@ install-omnisharp() {
 
 # Installs Pyright, the Python LSP implementation used in this setup
 install-pyright() {
-    sudo apt-get install -y python3 python3-pip
     pip install pyright
 }
 
@@ -58,7 +57,7 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "make" "gcc" "unzip" "npm"
+check-deps "make" "gcc" "unzip" "pip" "npm"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
