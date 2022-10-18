@@ -11,20 +11,28 @@ check-deps() {
 
 # Installs OmniSharp, the C# LSP implementation used in this setup
 install-omnisharp() {
-    mkdir -p /usr/local/bin/omnisharp 2>/dev/null
+    mkdir -v -p /usr/local/bin/omnisharp 2>/dev/null
     cd /usr/local/bin/omnisharp
 
-    curl -LO https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.1/omnisharp-linux-x64-net6.0.tar.gz
-    tar -xf omnisharp-linux-x64-net6.0.tar.gz
-    rm omnisharp-linux-x64-net6.0.tar.gz
+    sudo curl -LO https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.1/omnisharp-linux-x64-net6.0.tar.gz
+    sudo tar -xvf omnisharp-linux-x64-net6.0.tar.gz
+    sudo rm -v omnisharp-linux-x64-net6.0.tar.gz
 
     cd "$CURRENT_DIR"
 }
 
-# Install Pyright, the Python LSP implementation used in this setup
+# Installs Pyright, the Python LSP implementation used in this setup
 install-pyright() {
     sudo apt-get install -y python3 python3-pip
     pip install pyright
+}
+
+# Installs win32yank.exe to give neovim access to the system clipboard on WSL systems
+install-win32yank() {
+    curl -Lo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+    unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
+    chmod +x /tmp/win32yank.exe
+    sudo mv -v /tmp/win32yank.exe /usr/local/bin/
 }
 
 # Prints a string in green into stdout
@@ -45,13 +53,13 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "make" "gcc"
+check-deps "make" "gcc" "unzip"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
 # Removes existing nvim binary
 if [[ -e "/usr/local/bin/nvim" ]]; then
-    sudo rm /usr/local/bin/nvim
+    sudo rm -v /usr/local/bin/nvim
 fi
 
 cd "$NVIM_CLONE_DIR"
@@ -60,7 +68,14 @@ make CMAKE_BUILD_TYPE="Release"
 sudo make install
 
 cd "$CURRENT_DIR"
-rm -rf "$NVIM_CLONE_DIR"
+rm -rf -v "$NVIM_CLONE_DIR"
+
+# Checks if system is running on WSL
+if [[ ! -z "$(uname -r | grep -i "Microsoft")" ]]; then
+    info "\n============ Installing win32yank.exe (Clipboard support for WSL) ==============\n"
+    install-win32yank
+    info "\n=========================== win32yank.exe installed ============================\n"
+fi
 
 info "\n======================== Installing OmniSharp (C# LSP) =========================\n"
 install-omnisharp
