@@ -28,7 +28,7 @@ install-pyright() {
 
 # Installs tsserver, the Typescript/Javascript LSP implementation used in this setup
 install-tsserver() {
-    npm install -g typescript typescript-language-server
+    sudo npm install -g typescript typescript-language-server
 }
 
 # Installs win32yank.exe to give neovim access to the system clipboard on WSL systems
