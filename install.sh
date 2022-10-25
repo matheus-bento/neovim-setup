@@ -11,7 +11,7 @@ check-deps() {
 
 # Installs OmniSharp, the C# LSP implementation used in this setup
 install-omnisharp() {
-    mkdir -v -p /usr/local/bin/omnisharp 2>/dev/null
+    sudo mkdir -v -p /usr/local/bin/omnisharp 2>/dev/null
     cd /usr/local/bin/omnisharp
 
     sudo curl -LO https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.1/omnisharp-linux-x64-net6.0.tar.gz
