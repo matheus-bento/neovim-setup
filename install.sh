@@ -71,6 +71,9 @@ cd "$NVIM_CLONE_DIR"
 make CMAKE_BUILD_TYPE="Release"
 sudo make install
 
+# Adding python support for neovim
+pip install neovim
+
 cd "$CURRENT_DIR"
 rm -rf -v "$NVIM_CLONE_DIR"
 
