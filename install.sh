@@ -57,7 +57,7 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "make" "gcc" "unzip" "pip" "npm"
+check-deps "cmake" "gcc" "unzip" "pip" "npm"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
