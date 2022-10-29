@@ -11,7 +11,7 @@ check-deps() {
 
 # Installs OmniSharp, the C# LSP implementation used in this setup
 install-omnisharp() {
-    mkdir -v -p /usr/local/bin/omnisharp 2>/dev/null
+    sudo mkdir -v -p /usr/local/bin/omnisharp 2>/dev/null
     cd /usr/local/bin/omnisharp
 
     sudo curl -LO https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.1/omnisharp-linux-x64-net6.0.tar.gz
@@ -28,7 +28,7 @@ install-pyright() {
 
 # Installs tsserver, the Typescript/Javascript LSP implementation used in this setup
 install-tsserver() {
-    npm install -g typescript typescript-language-server
+    sudo npm install -g typescript typescript-language-server
 }
 
 # Installs win32yank.exe to give neovim access to the system clipboard on WSL systems
@@ -57,7 +57,7 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "make" "gcc" "unzip" "pip" "npm"
+check-deps "cmake" "gcc" "unzip" "pip" "npm"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
@@ -70,6 +70,9 @@ cd "$NVIM_CLONE_DIR"
 
 make CMAKE_BUILD_TYPE="Release"
 sudo make install
+
+# Adding python support for neovim
+pip install neovim
 
 cd "$CURRENT_DIR"
 rm -rf -v "$NVIM_CLONE_DIR"
