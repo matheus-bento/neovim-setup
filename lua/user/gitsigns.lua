@@ -4,7 +4,6 @@ local opts = { noremap=true, silent=true }
 
 vim.keymap.set('n', 'gb', ':Gitsigns toggle_current_line_blame<CR>', opts)
 vim.keymap.set('n', 'gs', ':Gitsigns toggle_signs<CR>', opts)
-vim.keymap.set('n', 't', ':NvimTreeToggle<CR>', opts)
 
 require('gitsigns').setup {
     signcolumn              = true, -- Signals on columns representing changes on git
