@@ -9,6 +9,8 @@ My personal neovim setup with plugins, themes and editor settings I use.
 Clone this repo in ~/.config/nvim (you should clean any previous neovim configurations in the directory before this) and run install.sh, this will install neovim nightly and some LSP implementations. 
 Be patient! Compiling neovim from source can take some time. The lua configuration files will be immediatelly identified by neovim on start.
 
+To install the debuggers used by vimspector, run :VimspectorInstall at your first startup.
+
 ## Upgrading
 
 You can keep the repository after installation in order to get updates with new configurations and plugins. Just pull from the remote to get the most recent configuration.
