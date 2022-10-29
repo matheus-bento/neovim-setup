@@ -7,10 +7,10 @@
 local M = {}
 
 function M.setup()
-    -- configures debugger that should be automatically installed
-    vim.g.vimspector_install_gadgets = { "debugpy", "netcoredbg" }
+    -- Configures debugger that should be automatically installed
+    vim.g.vimspector_install_gadgets = { "debugpy", "netcoredbg", "vscode-node-debug2" }
     vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
-    vim.cmd('packadd! vimspector')
+    vim.cmd [[packadd! vimspector]]
 end
 
 return M
