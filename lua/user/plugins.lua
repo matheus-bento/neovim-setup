@@ -36,6 +36,8 @@ return require('packer').startup(function(use)
 
 	use 'puremourning/vimspector' -- Debugging frontend for neovim
 
+	use 'akinsho/toggleterm.nvim' -- Improved internal terminal
+
 	if packer_bootstrap then
 		-- Synchronizes once packer is installed
 		require('packer').sync()

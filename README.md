@@ -33,6 +33,7 @@ Changes to lua configuration files will be immediatelly detected after pulling n
 - [feline.nvim](https://github.com/feline-nvim/feline.nvim)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [vimspector](https://github.com/puremourning/vimspector)
+- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 
 ## nvim-tree icons
 
