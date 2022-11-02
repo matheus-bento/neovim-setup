@@ -5,9 +5,9 @@ vim.o.termguicolors = true     -- Enabling termguicolors for feline
 
 vim.opt.list = true
 vim.opt.listchars = {
-    tab   = '→ ',
-    eol   = '↵',
-    space = '◦',
+	tab   = '→ ',
+	eol   = '↵',
+	space = '◦',
 }
 
 vim.o.tabstop       = 4        -- 4 characters of indentation on tabs
