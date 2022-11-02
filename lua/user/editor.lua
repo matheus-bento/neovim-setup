@@ -12,4 +12,4 @@ vim.opt.listchars = {
 
 vim.o.tabstop       = 4        -- 4 characters of indentation on tabs
 vim.o.shiftwidth    = 4        -- 4 characters of indentation on autoindent by neovim
-vim.o.expandtab     = true     -- Insert spaces instead of tabs
+vim.o.expandtab     = false    -- Insert spaces instead of tabs
