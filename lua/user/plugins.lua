@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     use 'Mofiqul/dracula.nvim' -- Dracula theme
 
     use 'fgheng/winbar.nvim' -- Navigation breadcrumb
+    use 'romgrk/barbar.nvim' -- Prettier tabs plugin
 
     use 'feline-nvim/feline.nvim' -- Git status bar
     use 'lewis6991/gitsigns.nvim' -- Git utilities for the text editor
