@@ -49,7 +49,7 @@ local lsp_flags = {
 }
 
 -- Binding on_attach_lsp and lsp_flags to each installed language server
-lsp_servers = { 'pyright', 'omnisharp', 'tsserver', 'gopls' }
+local lsp_servers = { 'pyright', 'omnisharp', 'tsserver', 'gopls' }
 
 for _, lsp in ipairs(lsp_servers) do
     local lsp_config = {
