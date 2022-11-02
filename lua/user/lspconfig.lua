@@ -49,30 +49,18 @@ local lsp_flags = {
 }
 
 -- Binding on_attach_lsp and lsp_flags to each installed language server
+lsp_servers = { 'pyright', 'omnisharp', 'tsserver', 'gopls' }
 
--- Python LSP
-require('lspconfig').pyright.setup {
-    on_attach = on_attach_lsp,
-    flags = lsp_flags,
-}
+for _, lsp in ipairs(lsp_servers) do
+    local lsp_config = {
+        on_attach = on_attach_lsp,
+        flags = lsp_flags,
+    }
 
--- C# LSP
-require('lspconfig').omnisharp.setup {
-    -- The cmd should point to the same OmniSharp installation path
-    -- defined on neovim-install.sh
-    cmd = { "dotnet", "/usr/local/bin/omnisharp/OmniSharp.dll" },
-    on_attach = on_attach_lsp,
-    flags = lsp_flags,
-}
+    if lsp == 'omnisharp' then
+        lsp_config.cmd = { "dotnet", "/usr/local/bin/omnisharp/OmniSharp.dll" }
+    end
 
--- Typescript/Javascript LSP
-require('lspconfig').tsserver.setup {
-    on_attach = on_attach_lsp,
-    flags = lsp_flags,
-}
-
-require('lspconfig').gopls.setup {
-    on_attach = on_attach_lsp,
-    flags = lsp_flags,
-}
+    require('lspconfig')[lsp].setup(lsp_config)
+end
 
