@@ -7,7 +7,7 @@ require('user.lspconfig')
 require('user.nvim_cmp')
 require('user.barbar')
 require('winbar').setup {
-    enabled = true
+	enabled = true
 }
 require('vimspector').setup()
 require('nvim-tree').setup()
