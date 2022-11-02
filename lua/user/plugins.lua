@@ -14,7 +14,7 @@ local packer_installed = function()
   return false
 end
 
-local is_installed = packer_installed()
+local packer_bootstrap = packer_installed()
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Package manager
@@ -32,8 +32,8 @@ return require('packer').startup(function(use)
 
     use 'puremourning/vimspector' -- Debugging frontend for neovim
     
-    if is_installed then
+    if packer_bootstrap then
         -- Synchronizes once packer is installed
-        prequire('packer').sync()
+        require('packer').sync()
     end
 end)

@@ -1,6 +1,6 @@
 require('user.plugins')
-require('user.theme')
 require('user.editor')
+require('user.theme')
 require('user.nvim_tree')
 require('user.gitsigns')
 require('user.lspconfig')
