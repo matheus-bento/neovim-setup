@@ -71,3 +71,8 @@ require('lspconfig').tsserver.setup {
     flags = lsp_flags,
 }
 
+require('lspconfig').gopls.setup {
+    on_attach = on_attach_lsp,
+    flags = lsp_flags,
+}
+

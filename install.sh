@@ -31,6 +31,18 @@ install-tsserver() {
     sudo npm install -g typescript typescript-language-server
 }
 
+# Installs go-pls, the golang implementation used in this setup
+install-gopls() {
+    [[ -z "$GOPATH" ]] && error '$GOPATH variable was not defined'
+
+    cd "$GOPATH"
+
+    GO111MODULE=on
+    go install -v golang.org/x/tools/gopls
+
+    cd "$CURRENT_DIR"
+}
+
 # Installs win32yank.exe to give neovim access to the system clipboard on WSL systems
 install-win32yank() {
     curl -Lo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
@@ -57,7 +69,7 @@ info "==========================================================================
 CURRENT_DIR="$(pwd)"
 NVIM_CLONE_DIR="$HOME/.config/nvim/neovim"
 
-check-deps "cmake" "gcc" "unzip" "pip" "npm"
+check-deps "cmake" "gcc" "unzip" "pip" "npm" "go"
 
 git clone https://github.com/neovim/neovim "$NVIM_CLONE_DIR"
 
@@ -79,27 +91,30 @@ rm -rf -v "$NVIM_CLONE_DIR"
 
 # Checks if system is running on WSL
 if [[ ! -z "$(uname -r | grep -i "Microsoft")" ]]; then
-    info "\n============ Installing win32yank.exe (Clipboard support for WSL) ==============\n"
+    info "============ Installing win32yank.exe (Clipboard support for WSL) =============="
     install-win32yank
-    info "\n=========================== win32yank.exe installed ============================\n"
+    info "=========================== win32yank.exe installed ============================"
 fi
 
-info "\n======================== Installing OmniSharp (C# LSP) =========================\n"
+info "======================== Installing OmniSharp (C# LSP) ========================="
 install-omnisharp
-info "\n============================= OmniSharp installed ==============================\n"
+info "============================= OmniSharp installed =============================="
 
-info "\n======================= Installing Pyright (Python LSP) ========================\n"
+info "======================= Installing Pyright (Python LSP) ========================"
 install-pyright
-info "\n============================== Pyright installed ===============================\n"
+info "============================== Pyright installed ==============================="
 
-info "\n====== Installing typescript-language-server (Typescript/Javascript LSP) =======\n"
+info "====== Installing typescript-language-server (Typescript/Javascript LSP) ======="
 install-tsserver
-info "\n=================== typescript-language-server installed =======================\n"
+info "=================== typescript-language-server installed ======================="
 
-PATH=$PATH:$HOME/.local/bin
+info "======================== Installing gopls (golang LSP) ========================="
+install-gopls
+info "=============================== gopls installed ================================"
 
 info "\n================================================================================"
 info "======================== Neovim installed successfully ========================="
-info "================================================================================\n"
+info "================================================================================"
 
 exit 0
+
