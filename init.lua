@@ -4,6 +4,7 @@ require('user.theme')
 require('user.nvim_tree')
 require('user.gitsigns')
 require('user.lspconfig')
+require('user.nvim_cmp')
 require('winbar').setup {
     enabled = true
 }

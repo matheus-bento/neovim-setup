@@ -50,11 +50,13 @@ local lsp_flags = {
 
 -- Binding on_attach_lsp and lsp_flags to each installed language server
 local lsp_servers = { 'pyright', 'omnisharp', 'tsserver', 'gopls' }
+local cmp_nvim_lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 for _, lsp in ipairs(lsp_servers) do
     local lsp_config = {
-        on_attach = on_attach_lsp,
-        flags = lsp_flags,
+        flags        = lsp_flags,
+        on_attach    = on_attach_lsp,
+        capabilities = cmp_nvim_lsp_capabilities,
     }
 
     if lsp == 'omnisharp' then
