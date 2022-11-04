@@ -4,6 +4,7 @@ vim.o.number        = true     -- Enabling line numbers
 vim.o.termguicolors = true     -- Enabling termguicolors for feline
 vim.g.mapleader     = '\\'
 
+-- Defining characters to represent some whitespace characters
 vim.opt.list = true
 vim.opt.listchars = {
 	tab   = '→ ',
