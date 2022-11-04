@@ -7,10 +7,10 @@ local opts = { noremap=true, silent=true }
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev,  opts)
 vim.keymap.set('n', ']d',       vim.diagnostic.goto_next,  opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<leader>lq', vim.diagnostic.setloclist, opts)
 
 -- Maps the following keys after the language server attaches to the current
 -- buffer
@@ -21,26 +21,26 @@ local on_attach_lsp = function(client, bufnr)
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap=true, silent=true, buffer=bufnr }
-	vim.keymap.set('n', 'gD',        vim.lsp.buf.declaration,              bufopts)
-	vim.keymap.set('n', 'gd',        vim.lsp.buf.definition,               bufopts)
-	vim.keymap.set('n', 'gi',        vim.lsp.buf.implementation,           bufopts)
-	vim.keymap.set('n', 'gr',        vim.lsp.buf.references,               bufopts)
+	vim.keymap.set('n', '<leader>lD',        vim.lsp.buf.declaration,              bufopts)
+	vim.keymap.set('n', '<leader>ld',        vim.lsp.buf.definition,               bufopts)
+	vim.keymap.set('n', '<leader>li',        vim.lsp.buf.implementation,           bufopts)
+	vim.keymap.set('n', '<leader>lr',        vim.lsp.buf.references,               bufopts)
 
-	vim.keymap.set('n', 'K',         vim.lsp.buf.hover,                    bufopts)
+	vim.keymap.set('n', '<leader>lh',        vim.lsp.buf.hover,                    bufopts)
 
-	vim.keymap.set('n', '<C-k>',     vim.lsp.buf.signature_help,           bufopts)
+	vim.keymap.set('n', '<leader>ls',        vim.lsp.buf.signature_help,           bufopts)
 
-	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder,     bufopts)
-	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder,  bufopts)
+	vim.keymap.set('n', '<leader>lwa',         vim.lsp.buf.add_workspace_folder,     bufopts)
+	vim.keymap.set('n', '<leader>lwr',         vim.lsp.buf.remove_workspace_folder,  bufopts)
 
-	vim.keymap.set('n', '<space>wl', function()
+	vim.keymap.set('n', '<leader>lwl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
 
-	vim.keymap.set('n', '<space>D',  vim.lsp.buf.type_definition,          bufopts)
-	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename,                   bufopts)
-	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action,              bufopts)
-	vim.keymap.set('n', '<space>f',  vim.lsp.buf.format,                   bufopts)
+	vim.keymap.set('n', '<leader>lF',        vim.lsp.buf.type_definition,          bufopts)
+	vim.keymap.set('n', '<leader>lrn',       vim.lsp.buf.rename,                   bufopts)
+	vim.keymap.set('n', '<leader>lca',       vim.lsp.buf.code_action,              bufopts)
+	vim.keymap.set('n', '<leader>lf',        vim.lsp.buf.format,                   bufopts)
 end
 
 local lsp_flags = {
