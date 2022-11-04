@@ -11,6 +11,10 @@ vim.opt.listchars = {
 	space = '◦',
 }
 
-vim.o.tabstop       = 4        -- 4 characters of indentation on tabs
-vim.o.shiftwidth    = 4        -- 4 characters of indentation on autoindent by neovim
-vim.o.expandtab     = false    -- Insert spaces instead of tabs
+vim.o.tabstop         = 4        -- 4 characters of indentation on tabs
+vim.o.shiftwidth      = 4        -- 4 characters of indentation on autoindent by neovim
+vim.o.expandtab       = false    -- Insert spaces instead of tabs
+
+vim.o.foldmethod     = 'indent' -- Fold following the file indentation
+vim.o.foldlevelstart = 999      -- Setting a high fold level so all blocks are shown on start
+
