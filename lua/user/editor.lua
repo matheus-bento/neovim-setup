@@ -2,6 +2,7 @@
 
 vim.o.number        = true     -- Enabling line numbers
 vim.o.termguicolors = true     -- Enabling termguicolors for feline
+vim.g.mapleader     = '\\'
 
 vim.opt.list = true
 vim.opt.listchars = {
