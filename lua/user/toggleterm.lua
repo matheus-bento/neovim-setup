@@ -5,5 +5,5 @@ require'toggleterm'.setup {
 
 local opts = { noremap=true, silent=true }
 
-vim.keymap.set('n', '<A-t>', ':ToggleTerm<CR>', opts)
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', opts)
 
