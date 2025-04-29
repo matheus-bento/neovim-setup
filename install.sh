@@ -37,8 +37,7 @@ install-gopls() {
 
 	cd "$GOPATH"
 
-	GO111MODULE=on
-	go install -v golang.org/x/tools/gopls
+	go install -v golang.org/x/tools/gopls@latest
 
 	cd "$CURRENT_DIR"
 }
